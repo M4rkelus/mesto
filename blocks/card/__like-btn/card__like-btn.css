@@ -1,0 +1,19 @@
+.card__like-btn {
+  position: absolute;
+  bottom: 30px;
+  right: 20px;
+  border: none;
+  background: no-repeat url(../../../images/like.svg) center center;
+  height: 19px;
+  width: 22px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.card__like-btn:hover {
+  opacity: 0.6;
+}
+
+.card__like-btn:active {
+  background: no-repeat url(../../../images/like-active.svg) center center;
+}

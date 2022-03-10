@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+    <script defer src="./index.js"></script>
+  </head>
+  <body>
+    <div class="page preload">
+      <header class="header">
+        <img class="header__logo" src="./images/logo.svg" alt="Лого" />
+      </header>
+
+      <main class="content">
+        <section class="profile">
+          <div class="profile__avatar"></div>
+          <div class="profile__info">
+            <button class="profile__edit-btn"></button>
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <p class="profile__subtitle">Исследователь океана</p>
+          </div>
+          <button class="profile__add-btn"></button>
+        </section>
+
+        <section class="elements" aria-label="Галерея">
+          <div class="card">
+            <img
+              class="card__img"
+              src="./images/karachaevsk.jpg"
+              alt="Карачаевск"
+            />
+            <p class="card__caption">Карачаевск</p>
+            <button class="card__like-btn"></button>
+          </div>
+          <div class="card">
+            <img
+              class="card__img"
+              src="./images/elbrus.jpg"
+              alt="Гора Эльбрус"
+            />
+            <p class="card__caption">Гора Эльбрус</p>
+            <button class="card__like-btn"></button>
+          </div>
+          <div class="card">
+            <img class="card__img" src="./images/dombay.jpg" alt="Домбай" />
+            <p class="card__caption">Домбай</p>
+            <button class="card__like-btn"></button>
+          </div>
+          <div class="card">
+            <img
+              class="card__img"
+              src="./images/elbrus.jpg"
+              alt="Гора Эльбрус"
+            />
+            <p class="card__caption">Гора Эльбрус</p>
+            <button class="card__like-btn"></button>
+          </div>
+          <div class="card">
+            <img class="card__img" src="./images/dombay.jpg" alt="Домбай" />
+            <p class="card__caption">Домбай</p>
+            <button class="card__like-btn"></button>
+          </div>
+          <div class="card">
+            <img
+              class="card__img"
+              src="./images/karachaevsk.jpg"
+              alt="Карачаевск"
+            />
+            <p class="card__caption">Карачаево-Черкессия</p>
+            <button class="card__like-btn"></button>
+          </div>
+        </section>
+
+        <div class="popup">
+          <form class="popup__container">
+            <h2 class="popup__title">Редактировать профиль</h2>
+
+            <input class="popup__field popup__field_value_name" type="text" />
+            <input class="popup__field popup__field_value_about" type="text" />
+            <button class="popup__save-btn">Сохранить</button>
+            <button class="popup__close-btn"></button>
+          </form>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <p class="footer__copyright">© 2022 Пирогов Марк</p>
+      </footer>
+    </div>
+  </body>
+</html>

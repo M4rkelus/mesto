@@ -1,0 +1,16 @@
+.profile__avatar {
+  border-radius: 50%;
+  margin-right: 30px;
+  background: no-repeat url(../../../images/avatar.jpg) center center / cover;
+  min-height: 120px;
+  min-width: 120px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .profile__avatar {
+    margin: 0 0 26px;
+  }
+}

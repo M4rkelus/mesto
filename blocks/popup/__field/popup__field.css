@@ -1,0 +1,14 @@
+.popup__field {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  height: 39px;
+  padding: 0;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: normal;
+}
+
+.popup__field:not(:last-of-type) {
+  margin-bottom: 17px;
+}

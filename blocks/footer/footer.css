@@ -1,0 +1,15 @@
+.footer {
+  margin: 0 auto;
+  min-height: 18px;
+  max-width: 880px;
+  padding: 66px 0 60px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 575px) {
+  .footer {
+    padding: 48px 0 36px;
+  }
+}
