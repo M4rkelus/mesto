@@ -1,49 +1,42 @@
 // Elements
 const profileName = document.querySelector(".profile__title"),
-  profileAbout = document.querySelector(".profile__subtitle"),
+  profileJob = document.querySelector(".profile__subtitle"),
   editBtn = document.querySelector(".profile__edit-btn"),
   popup = document.querySelector(".popup"),
-  popupForm = document.querySelector(".popup__container"),
-  inputField = popup.querySelectorAll(".popup__field"),
-  closeBtn = popup.querySelector(".popup__close-btn"),
-  saveBtn = popup.querySelector(".popup__save-btn");
+  popupForm = document.querySelector(".popup__form"),
+  nameInput = document.querySelector(".popup__field_value_name"),
+  jobInput = document.querySelector(".popup__field_value_job"),
+  closeBtn = document.querySelector(".popup__close-btn"),
+  saveBtn = document.querySelector(".popup__save-btn");
 
 // Open & close popup
-const togglePopup = function (btn) {
-  btn.addEventListener("click", (e) => {
-    e.preventDefault(e);
-    if (e.target === btn) popup.classList.toggle("popup_opened");
-  });
+const togglePopup = function () {
+  [editBtn, closeBtn].forEach((el) =>
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      if (e.target === el) {
+        nameInput.value = profileName.textContent;
+        jobInput.value = profileJob.textContent;
+        popup.classList.toggle("popup_opened");
+      }
+    })
+  );
 };
 
 // Save profile
 const saveProfile = function () {
-  saveBtn.addEventListener("click", (e) => {
+  popupForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    profileName.textContent = inputField[0].value;
-    profileAbout.textContent = inputField[1].value;
-  });
-  togglePopup(saveBtn);
-};
-
-// Prevent tansitionon on page load
-const preventTransitions = function () {
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelector(".preload").classList.remove("preload");
+    profileName.textContent = nameInput.value;
+    profileJob.textContent = jobInput.value;
+    popup.classList.remove("popup_opened");
   });
 };
 
 // Initialization function
 const init = function () {
-  inputField[0].value = profileName.textContent;
-  inputField[1].value = profileAbout.textContent;
-
-  preventTransitions();
-  togglePopup(editBtn);
-  togglePopup(closeBtn);
-  togglePopup(popup);
+  togglePopup();
   saveProfile();
-
-  popupForm.addEventListener("submit", saveProfile);
 };
 init();

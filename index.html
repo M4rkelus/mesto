@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css" />
-    <script defer src="./index.js" type="text/javascript"></script>
   </head>
   <body>
     <div class="page preload">
@@ -18,77 +17,141 @@
         <section class="profile">
           <div class="profile__avatar"></div>
           <div class="profile__info">
-            <button class="profile__edit-btn"></button>
+            <button
+              class="profile__edit-btn"
+              type="button"
+              aria-label="Редактировать"
+            ></button>
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
-          <button class="profile__add-btn"></button>
+          <button
+            class="profile__add-btn"
+            type="button"
+            aria-label="Добавить"
+          ></button>
         </section>
 
         <section class="elements" aria-label="Галерея">
-          <div class="card">
+          <article class="card">
             <img
               class="card__img"
               src="./images/karachaevsk.jpg"
               alt="Карачаевск"
             />
-            <p class="card__caption">Карачаевск</p>
-            <button class="card__like-btn"></button>
-          </div>
-          <div class="card">
+            <div class="card__caption">
+              <h2 class="card__title">Карачаевск</h2>
+              <button
+                class="card__like-btn"
+                type="button"
+                aria-label="Мне это любо"
+              ></button>
+            </div>
+          </article>
+
+          <article class="card">
             <img
               class="card__img"
               src="./images/elbrus.jpg"
               alt="Гора Эльбрус"
             />
-            <p class="card__caption">Гора Эльбрус</p>
-            <button class="card__like-btn"></button>
-          </div>
-          <div class="card">
+            <div class="card__caption">
+              <h2 class="card__title">Гора Эльбрус</h2>
+              <button
+                class="card__like-btn"
+                type="button"
+                aria-label="Мне это любо"
+              ></button>
+            </div>
+          </article>
+
+          <article class="card">
             <img class="card__img" src="./images/dombay.jpg" alt="Домбай" />
-            <p class="card__caption">Домбай</p>
-            <button class="card__like-btn"></button>
-          </div>
-          <div class="card">
+            <div class="card__caption">
+              <h2 class="card__title">Домбай</h2>
+              <button
+                class="card__like-btn"
+                type="button"
+                aria-label="Мне это любо"
+              ></button>
+            </div>
+          </article>
+
+          <article class="card">
             <img
               class="card__img"
               src="./images/elbrus.jpg"
               alt="Гора Эльбрус"
             />
-            <p class="card__caption">Гора Эльбрус</p>
-            <button class="card__like-btn"></button>
-          </div>
-          <div class="card">
+            <div class="card__caption">
+              <h2 class="card__title">Гора Эльбрус</h2>
+              <button
+                class="card__like-btn"
+                type="button"
+                aria-label="Мне это любо"
+              ></button>
+            </div>
+          </article>
+
+          <article class="card">
             <img class="card__img" src="./images/dombay.jpg" alt="Домбай" />
-            <p class="card__caption">Домбай</p>
-            <button class="card__like-btn"></button>
-          </div>
-          <div class="card">
+            <div class="card__caption">
+              <h2 class="card__title">Домбай</h2>
+              <button
+                class="card__like-btn"
+                type="button"
+                aria-label="Мне это любо"
+              ></button>
+            </div>
+          </article>
+
+          <article class="card">
             <img
               class="card__img"
               src="./images/karachaevsk.jpg"
               alt="Карачаевск"
             />
-            <p class="card__caption">Карачаево-Черкессия</p>
-            <button class="card__like-btn"></button>
-          </div>
+            <div class="card__caption">
+              <h2 class="card__title">Карачаево-Черкессия</h2>
+              <button
+                class="card__like-btn"
+                type="button"
+                aria-label="Мне это любо"
+              ></button>
+            </div>
+          </article>
         </section>
-
-        <div class="popup">
-          <form class="popup__container">
-            <h2 class="popup__title">Редактировать профиль</h2>
-
-            <input class="popup__field popup__field_value_name" type="text" />
-            <input class="popup__field popup__field_value_about" type="text" />
-            <button class="popup__save-btn">Сохранить</button>
-            <button class="popup__close-btn"></button>
-          </form>
-        </div>
       </main>
 
       <footer class="footer">
         <p class="footer__copyright">© 2022 Пирогов Марк</p>
       </footer>
+
+      <div class="popup">
+        <div class="popup__container">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <form class="popup__form">
+            <input
+              class="popup__field popup__field_value_name"
+              type="text"
+              name="name"
+            />
+            <input
+              class="popup__field popup__field_value_job"
+              type="text"
+              name="job"
+            />
+            <input
+              class="popup__save-btn"
+              type="submit"
+              name="submit"
+              value="Сохранить"
+            />
+          </form>
+          <button class="popup__close-btn" type="button"></button>
+        </div>
+      </div>
     </div>
+    <script src="./index.js"></script>
   </body>
 </html>

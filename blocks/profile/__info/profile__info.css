@@ -1,15 +1,12 @@
 .profile__info {
   display: grid;
-  grid-template-columns: 1fr -webkit-min-content;
-  grid-template-columns: 1fr min-content;
+  grid-template-columns: minmax(-webkit-min-content, -webkit-max-content) -webkit-min-content;
+  grid-template-columns: minmax(min-content, max-content) min-content;
   grid-template-rows: repeat(2, -webkit-min-content);
   grid-template-rows: repeat(2, min-content);
   grid-template-areas:
     "title edit-btn"
     "subtitle subtitle";
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
 }
 
 @media (max-width: 768px) {

@@ -1,3 +1,7 @@
+.header__logo {
+  max-height: 33px;
+}
+
 @media (max-width: 575px) {
   .header__logo {
     margin-left: 8px;

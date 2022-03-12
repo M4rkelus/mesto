@@ -9,9 +9,6 @@
   box-sizing: border-box;
   padding: 0;
   cursor: pointer;
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
 }
 
 .profile__add-btn:hover {
@@ -27,6 +24,7 @@
 
 @media (max-width: 575px) {
   .profile__add-btn {
+    background-size: 16px;
     width: 282px;
   }
 }

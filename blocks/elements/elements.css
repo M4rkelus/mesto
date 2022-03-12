@@ -6,9 +6,6 @@
   margin: 0 auto;
   max-width: 880px;
   padding-top: 51px;
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
 }
 
 @media (max-width: 768px) {

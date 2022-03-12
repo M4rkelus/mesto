@@ -3,10 +3,7 @@
   margin: 0 auto;
   min-height: 74px;
   max-width: 880px;
-  padding-top: 45px;
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  padding: 45px 19px 0;
 }
 
 .header::after {
@@ -15,7 +12,7 @@
   left: 0;
   content: " ";
   opacity: 0.7;
-  border: 1px solid #545454;
+  border-top: 1px solid #545454;
   height: 0;
   width: 100%;
 }
@@ -24,11 +21,5 @@
   .header {
     min-height: 56px;
     padding-top: 28px;
-  }
-
-  .header::after {
-    left: -19px;
-    right: -19px;
-    width: calc(100% + 36px);
   }
 }

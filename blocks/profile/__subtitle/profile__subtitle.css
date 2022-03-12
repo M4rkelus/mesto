@@ -8,9 +8,6 @@
   font-size: 18px;
   line-height: 22px;
   font-weight: normal;
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
   grid-area: subtitle;
 }
 
