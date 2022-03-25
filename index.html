@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body>
-    <div class="page preload">
+    <div class="page">
       <header class="header">
         <img class="header__logo" src="./images/logo.svg" alt="Лого" />
       </header>
@@ -33,93 +33,24 @@
         </section>
 
         <section class="elements" aria-label="Галерея">
-          <article class="card">
-            <img
-              class="card__img"
-              src="./images/karachaevsk.jpg"
-              alt="Карачаевск"
-            />
-            <div class="card__caption">
-              <h2 class="card__title">Карачаевск</h2>
+          <template id="card">
+            <article class="card">
+              <img class="card__img" src="" alt="" />
               <button
-                class="card__like-btn"
+                class="card__delete-btn"
                 type="button"
-                aria-label="Мне это любо"
+                aria-label="Удалить"
               ></button>
-            </div>
-          </article>
-
-          <article class="card">
-            <img
-              class="card__img"
-              src="./images/elbrus.jpg"
-              alt="Гора Эльбрус"
-            />
-            <div class="card__caption">
-              <h2 class="card__title">Гора Эльбрус</h2>
-              <button
-                class="card__like-btn"
-                type="button"
-                aria-label="Мне это любо"
-              ></button>
-            </div>
-          </article>
-
-          <article class="card">
-            <img class="card__img" src="./images/dombay.jpg" alt="Домбай" />
-            <div class="card__caption">
-              <h2 class="card__title">Домбай</h2>
-              <button
-                class="card__like-btn"
-                type="button"
-                aria-label="Мне это любо"
-              ></button>
-            </div>
-          </article>
-
-          <article class="card">
-            <img
-              class="card__img"
-              src="./images/elbrus.jpg"
-              alt="Гора Эльбрус"
-            />
-            <div class="card__caption">
-              <h2 class="card__title">Гора Эльбрус</h2>
-              <button
-                class="card__like-btn"
-                type="button"
-                aria-label="Мне это любо"
-              ></button>
-            </div>
-          </article>
-
-          <article class="card">
-            <img class="card__img" src="./images/dombay.jpg" alt="Домбай" />
-            <div class="card__caption">
-              <h2 class="card__title">Домбай</h2>
-              <button
-                class="card__like-btn"
-                type="button"
-                aria-label="Мне это любо"
-              ></button>
-            </div>
-          </article>
-
-          <article class="card">
-            <img
-              class="card__img"
-              src="./images/karachaevsk.jpg"
-              alt="Карачаевск"
-            />
-            <div class="card__caption">
-              <h2 class="card__title">Карачаево-Черкессия</h2>
-              <button
-                class="card__like-btn"
-                type="button"
-                aria-label="Мне это любо"
-              ></button>
-            </div>
-          </article>
+              <div class="card__caption">
+                <h2 class="card__title"></h2>
+                <button
+                  class="card__like-btn"
+                  type="button"
+                  aria-label="Мне это любо"
+                ></button>
+              </div>
+            </article>
+          </template>
         </section>
       </main>
 
@@ -127,7 +58,7 @@
         <p class="footer__copyright">© 2022 Пирогов Марк</p>
       </footer>
 
-      <div class="popup">
+      <div class="popup popup_profile-edit">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form" name="popup">
@@ -151,6 +82,45 @@
           <button class="popup__close-btn" type="button"></button>
         </div>
       </div>
+
+      <div class="popup popup_card-add">
+        <div class="popup__container">
+          <h2 class="popup__title">Новое место</h2>
+          <form class="popup__form popup__form_card-add" name="popup">
+            <input
+              class="popup__field popup__field_value_card-name"
+              type="text"
+              name="name"
+              placeholder="Название"
+            />
+            <input
+              class="popup__field popup__field_value_card-link"
+              type="text"
+              name="link"
+              placeholder="Ссылка на картинку"
+            />
+            <input
+              class="popup__save-btn popup__save-btn_card-add"
+              type="submit"
+              name="submit"
+              value="Сохранить"
+            />
+          </form>
+          <button class="popup__close-btn" type="button"></button>
+        </div>
+      </div>
+
+      <template id="popup">
+        <div class="popup popup_card-preview">
+          <div class="popup__wrapper">
+            <figure class="popup__figure">
+              <img class="popup__img" src="" alt="" />
+              <figcaption class="popup__caption"></figcaption>
+            </figure>
+            <button class="popup__close-btn" type="button"></button>
+          </div>
+        </div>
+      </template>
     </div>
     <script src="./index.js"></script>
   </body>
