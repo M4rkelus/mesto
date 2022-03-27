@@ -64,9 +64,7 @@ const createCard = function (name, link) {
   cardImage.alt = name;
   cardTitle.textContent = name;
 
-  cardImage.addEventListener("click", () =>
-    showCardPreview(cardTitle.textContent, cardImage.src)
-  );
+  cardImage.addEventListener("click", () => showCardPreview(name, link));
   cardDeleteBtn.addEventListener("click", deleteCard);
   cardLikeBtn.addEventListener("click", toggleLike);
 
@@ -106,6 +104,7 @@ const toggleLike = function (e) {
 
 const showCardPreview = function (name, link) {
   previewCaption.textContent = name;
+  previewImage.alt = name;
   previewImage.src = link;
 
   openPopup(previewPopup);
