@@ -61,17 +61,31 @@
       <div class="popup popup_profile">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form popup__form_profile" name="profile-form">
+          <form
+            class="popup__form popup__form_profile"
+            name="profile-form"
+            novalidate
+          >
             <input
+              id="name-input"
               class="popup__field popup__field_value_name"
               type="text"
               name="name"
+              minlength="2"
+              maxlength="40"
+              required
             />
+            <span class="popup__input-error name-input-error"></span>
             <input
+              id="job-input"
               class="popup__field popup__field_value_job"
               type="text"
               name="job"
+              minlength="2"
+              maxlength="200"
+              required
             />
+            <span class="popup__input-error job-input-error"></span>
             <input
               class="popup__save-btn"
               type="submit"
@@ -89,19 +103,31 @@
       <div class="popup popup_card">
         <div class="popup__container">
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form popup__form_card" name="card-form">
+          <form
+            class="popup__form popup__form_card"
+            name="card-form"
+            novalidate
+          >
             <input
+              id="card-name-input"
               class="popup__field popup__field_value_card-name"
               type="text"
-              name="name"
+              name="card-name"
               placeholder="Название"
+              minlength="2"
+              maxlength="30"
+              required
             />
+            <span class="popup__input-error card-name-input-error"></span>
             <input
+              id="link-input"
               class="popup__field popup__field_value_card-link"
-              type="text"
+              type="url"
               name="link"
               placeholder="Ссылка на картинку"
+              required
             />
+            <span class="popup__input-error link-input-error"></span>
             <input
               class="popup__save-btn"
               type="submit"
@@ -128,5 +154,6 @@
     </div>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>

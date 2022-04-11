@@ -1,7 +1,7 @@
 .popup__save-btn {
   border: none;
   border-radius: 2px;
-  margin-top: 28px;
+  margin-top: 27px;
   background-color: var(--color-background-1);
   height: 50px;
   width: 358px;
@@ -26,7 +26,7 @@
 
 @media (max-width: 575px) {
   .popup__save-btn {
-    margin-top: 27px;
+    margin-top: 26px;
     height: 46px;
     width: 238px;
     font-size: 14px;

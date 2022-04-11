@@ -51,6 +51,9 @@ const previewImage = previewPopup.querySelector(".popup__img");
 const previewCaption = previewPopup.querySelector(".popup__caption");
 const previewCloseBtn = previewPopup.querySelector(".popup__close-btn");
 
+const popupList = Array.from(document.querySelectorAll(".popup"));
+const popupElement = document.querySelector(".popup");
+
 /* Functions */
 const createCard = function (name, link) {
   const cardTemplate = document.querySelector("#card").content;
@@ -98,6 +101,15 @@ const closePopup = function (popup) {
   popup.classList.remove("popup_opened");
 };
 
+const handleOverlayClick = function (e, popup) {
+  if (e.target === e.currentTarget) closePopup(popup);
+};
+
+const handleEscKeydown = function (e, popup) {
+  if (e.key !== "Escape") return;
+  closePopup(popup);
+};
+
 const toggleLike = function (e) {
   e.target.classList.toggle("card__like-btn_active");
 };
@@ -133,6 +145,12 @@ const registerPopupEventsListeners = function () {
   cardAddBtn.addEventListener("click", () => openPopup(cardPopup));
   cardCloseBtn.addEventListener("click", () => closePopup(cardPopup));
   cardForm.addEventListener("submit", addCard);
+  popupList.forEach((popup) =>
+    popup.addEventListener("click", (e) => handleOverlayClick(e, popup))
+  );
+  popupList.forEach((popup) =>
+    document.addEventListener("keydown", (e) => handleEscKeydown(e, popup))
+  );
 };
 
 const init = function () {
