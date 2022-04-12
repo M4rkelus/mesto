@@ -31,6 +31,8 @@ const page = document.querySelector(".page");
 const gallery = document.querySelector(".elements");
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
+const cardTemplate = document.querySelector("#card").content;
+const popupList = Array.from(document.querySelectorAll(".popup"));
 // Profile popup
 const profilePopup = document.querySelector(".popup_profile");
 const profileForm = profilePopup.querySelector(".popup__form_profile");
@@ -51,12 +53,8 @@ const previewImage = previewPopup.querySelector(".popup__img");
 const previewCaption = previewPopup.querySelector(".popup__caption");
 const previewCloseBtn = previewPopup.querySelector(".popup__close-btn");
 
-const popupList = Array.from(document.querySelectorAll(".popup"));
-const popupElement = document.querySelector(".popup");
-
 /* Functions */
 const createCard = function (name, link) {
-  const cardTemplate = document.querySelector("#card").content;
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImage = cardElement.querySelector(".card__img");
   const cardTitle = cardElement.querySelector(".card__title");
@@ -95,19 +93,25 @@ const deleteCard = function (e) {
 
 const openPopup = function (popup) {
   popup.classList.add("popup_opened");
+
+  document.addEventListener("keydown", handleEscKeydown);
 };
 
 const closePopup = function (popup) {
   popup.classList.remove("popup_opened");
+
+  document.removeEventListener("keydown", handleEscKeydown);
 };
 
-const handleOverlayClick = function (e, popup) {
+const handlePopupOverlayClick = function (e, popup) {
   if (e.target === e.currentTarget) closePopup(popup);
 };
 
-const handleEscKeydown = function (e, popup) {
+const handleEscKeydown = function (e) {
+  const currentPopup = document.querySelector(".popup_opened");
   if (e.key !== "Escape") return;
-  closePopup(popup);
+
+  closePopup(currentPopup);
 };
 
 const toggleLike = function (e) {
@@ -146,10 +150,7 @@ const registerPopupEventsListeners = function () {
   cardCloseBtn.addEventListener("click", () => closePopup(cardPopup));
   cardForm.addEventListener("submit", addCard);
   popupList.forEach((popup) =>
-    popup.addEventListener("click", (e) => handleOverlayClick(e, popup))
-  );
-  popupList.forEach((popup) =>
-    document.addEventListener("keydown", (e) => handleEscKeydown(e, popup))
+    popup.addEventListener("click", (e) => handlePopupOverlayClick(e, popup))
   );
 };
 
