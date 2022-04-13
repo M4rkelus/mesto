@@ -7,10 +7,6 @@ const CONFIG = {
   errorClass: "popup__input-error_active",
 };
 
-const profileNameInput = document.querySelector(".popup__field_value_name");
-const profileJobInput = document.querySelector(".popup__field_value_job");
-const profileEditBtn = document.querySelector(".profile__edit-btn"); // кнопка "открытия" формы профиля
-
 const showInputError = function (
   configObj,
   formElement,
@@ -28,6 +24,16 @@ const hideInputError = function (configObj, formElement, inputElement) {
   inputElement.classList.remove(configObj.inputErrorClass);
   errorElement.classList.remove(configObj.errorClass);
   errorElement.textContent = "";
+};
+
+const disableSubmitButton = function (configObj, buttonElement) {
+  buttonElement.classList.add(configObj.inactiveButtonClass);
+  buttonElement.disabled = true;
+};
+
+const activateSubmitButton = function (configObj, buttonElement) {
+  buttonElement.classList.remove(configObj.inactiveButtonClass);
+  buttonElement.disabled = false;
 };
 
 const checkInputValidity = function (configObj, formElement, inputElement) {
@@ -54,25 +60,9 @@ const setEventListeners = function (configObj, formElement) {
   toggleButtonState(configObj, inputList, buttonElement);
 
   inputList.forEach((inputElement) => {
-    /* Проверка и отключение ошибок полей в форме профиля при открытии.
-    И повторном открытии если не было submit'а. Для остальных форм такая
-    проверка не требуется, так поля в них изначально пустые. */
-    profileEditBtn.addEventListener("click", () => {
-      if (
-        inputElement === profileNameInput ||
-        inputElement === profileJobInput
-      ) {
-        checkInputValidity(configObj, formElement, inputElement);
-        toggleButtonState(configObj, inputList, buttonElement);
-      }
-    });
     // Проверка валидации всех полей во всех формах.
     inputElement.addEventListener("input", () => {
       checkInputValidity(configObj, formElement, inputElement);
-      toggleButtonState(configObj, inputList, buttonElement);
-    });
-    // Отключение кнопки submit'а после добовления новой карточки.
-    formElement.addEventListener("submit", () => {
       toggleButtonState(configObj, inputList, buttonElement);
     });
   });
@@ -84,11 +74,9 @@ const hasInvalidInput = function (inputList) {
 
 const toggleButtonState = function (configObj, inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(configObj.inactiveButtonClass);
-    buttonElement.setAttribute("disabled", "disabled");
+    disableSubmitButton(configObj, buttonElement);
   } else {
-    buttonElement.classList.remove(configObj.inactiveButtonClass);
-    buttonElement.removeAttribute("disabled", "disabled");
+    activateSubmitButton(configObj, buttonElement);
   }
 };
 
@@ -103,3 +91,5 @@ const enableValidation = function (configObj) {
 };
 
 enableValidation(CONFIG);
+
+export { CONFIG, disableSubmitButton, checkInputValidity, toggleButtonState };

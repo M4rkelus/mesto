@@ -1,3 +1,10 @@
+import {
+  CONFIG,
+  disableSubmitButton,
+  checkInputValidity,
+  toggleButtonState,
+} from "./validate.js";
+
 /* Data */
 const initialCards = [
   {
@@ -36,10 +43,14 @@ const popupList = Array.from(document.querySelectorAll(".popup"));
 // Profile popup
 const profilePopup = document.querySelector(".popup_profile");
 const profileForm = profilePopup.querySelector(".popup__form_profile");
+const profileInputList = Array.from(
+  profilePopup.querySelectorAll(".popup__field")
+);
 const profileNameInput = profilePopup.querySelector(".popup__field_value_name");
 const profileJobInput = profilePopup.querySelector(".popup__field_value_job");
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const profileCloseBtn = profilePopup.querySelector(".popup__close-btn_profile");
+const profileSaveBtn = profilePopup.querySelector(".popup__save-btn");
 // Card popup
 const cardPopup = document.querySelector(".popup_card");
 const cardForm = cardPopup.querySelector(".popup__form_card");
@@ -47,6 +58,7 @@ const cardNameInput = cardPopup.querySelector(".popup__field_value_card-name");
 const cardLinkInput = cardPopup.querySelector(".popup__field_value_card-link");
 const cardAddBtn = document.querySelector(".profile__add-btn");
 const cardCloseBtn = cardPopup.querySelector(".popup__close-btn_card");
+const cardSaveBtn = cardPopup.querySelector(".popup__save-btn");
 // Image preview popup
 const previewPopup = document.querySelector(".popup_preview");
 const previewImage = previewPopup.querySelector(".popup__img");
@@ -80,10 +92,10 @@ const renderCards = function (data) {
 
 const addCard = function (e) {
   e.preventDefault();
-  if (!cardNameInput.value || !cardLinkInput.value) return;
   gallery.prepend(createCard(cardNameInput.value, cardLinkInput.value));
   cardForm.reset();
 
+  disableSubmitButton(CONFIG, cardSaveBtn);
   closePopup(cardPopup);
 };
 
@@ -108,8 +120,8 @@ const handlePopupOverlayClick = function (e, popup) {
 };
 
 const handleEscKeydown = function (e) {
-  const currentPopup = document.querySelector(".popup_opened");
   if (e.key !== "Escape") return;
+  const currentPopup = document.querySelector(".popup_opened");
 
   closePopup(currentPopup);
 };
@@ -130,6 +142,10 @@ const editProfile = function () {
   profileNameInput.value = profileName.textContent;
   profileJobInput.value = profileJob.textContent;
 
+  profileInputList.forEach((inputElement) => {
+    checkInputValidity(CONFIG, profileForm, inputElement);
+    toggleButtonState(CONFIG, profileInputList, profileSaveBtn);
+  });
   openPopup(profilePopup);
 };
 
