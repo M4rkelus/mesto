@@ -26,13 +26,13 @@ const hideInputError = function (configObj, formElement, inputElement) {
   errorElement.textContent = "";
 };
 
-const disableSubmitButton = function (configObj, buttonElement) {
-  buttonElement.classList.add(configObj.inactiveButtonClass);
+const disableSubmitButton = function (inactiveButtonClass, buttonElement) {
+  buttonElement.classList.add(inactiveButtonClass);
   buttonElement.disabled = true;
 };
 
-const activateSubmitButton = function (configObj, buttonElement) {
-  buttonElement.classList.remove(configObj.inactiveButtonClass);
+const activateSubmitButton = function (inactiveButtonClass, buttonElement) {
+  buttonElement.classList.remove(inactiveButtonClass);
   buttonElement.disabled = false;
 };
 
@@ -74,9 +74,9 @@ const hasInvalidInput = function (inputList) {
 
 const toggleButtonState = function (configObj, inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
-    disableSubmitButton(configObj, buttonElement);
+    disableSubmitButton(configObj.inactiveButtonClass, buttonElement);
   } else {
-    activateSubmitButton(configObj, buttonElement);
+    activateSubmitButton(configObj.inactiveButtonClass, buttonElement);
   }
 };
 
@@ -91,5 +91,3 @@ const enableValidation = function (configObj) {
 };
 
 enableValidation(CONFIG);
-
-export { CONFIG, disableSubmitButton, checkInputValidity, toggleButtonState };

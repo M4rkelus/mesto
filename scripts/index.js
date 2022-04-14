@@ -1,10 +1,3 @@
-import {
-  CONFIG,
-  disableSubmitButton,
-  checkInputValidity,
-  toggleButtonState,
-} from "./validate.js";
-
 /* Data */
 const initialCards = [
   {
@@ -95,7 +88,7 @@ const addCard = function (e) {
   gallery.prepend(createCard(cardNameInput.value, cardLinkInput.value));
   cardForm.reset();
 
-  disableSubmitButton(CONFIG, cardSaveBtn);
+  disableSubmitButton("popup__save-btn_inactive", cardSaveBtn);
   closePopup(cardPopup);
 };
 
