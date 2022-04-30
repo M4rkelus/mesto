@@ -12,6 +12,7 @@
   box-sizing: border-box;
   padding: 34px 36px 37px;
   color: var(--color-text-2);
+  cursor: auto;
   -webkit-transition: max-width 0.3s ease-in-out, padding 0.3s ease-in-out;
   -o-transition: max-width 0.3s ease-in-out, padding 0.3s ease-in-out;
   transition: max-width 0.3s ease-in-out, padding 0.3s ease-in-out;
