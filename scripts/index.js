@@ -1,42 +1,6 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-
-/* Data */
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
-
-const VALIDATION_CONFIG = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__field",
-  submitButtonSelector: ".popup__save-btn",
-  inactiveButtonClass: "popup__save-btn_inactive",
-  inputErrorClass: "popup__field_type_error",
-  errorClass: "popup__input-error_active",
-};
+import { initialCards, VALIDATION_CONFIG } from "./data.js";
 
 /* Elements */
 const gallery = document.querySelector(".elements");
@@ -67,24 +31,29 @@ const profileFromValidator = new FormValidator(VALIDATION_CONFIG, profileForm);
 const cardFromValidator = new FormValidator(VALIDATION_CONFIG, cardForm);
 
 // Functions
+const createCardElement = function (data, cardSelector) {
+  return new Card(data, cardSelector, showCardPreview).createCard();
+};
+
 const renderCards = function (data) {
   data.map((el) => {
-    gallery.append(new Card(el, "#card", showCardPreview).createCard());
+    gallery.append(createCardElement(el, "#card"));
   });
 };
 
 const addCard = function (e) {
   e.preventDefault();
   gallery.prepend(
-    new Card(
-      { name: cardNameInput.value, link: cardLinkInput.value },
-      "#card",
-      showCardPreview
-    ).createCard()
+    createCardElement(
+      {
+        name: cardNameInput.value,
+        link: cardLinkInput.value,
+      },
+      "#card"
+    )
   );
-  cardForm.reset();
-  cardFromValidator.resetValidator();
 
+  cardForm.reset();
   closePopup(cardPopup);
 };
 
@@ -119,7 +88,7 @@ const showCardPreview = function (name, link) {
   openPopup(previewPopup);
 };
 
-const editProfile = function () {
+const handleOpenProfilePopup = function () {
   profileNameInput.value = profileName.textContent;
   profileJobInput.value = profileJob.textContent;
 
@@ -127,20 +96,26 @@ const editProfile = function () {
   openPopup(profilePopup);
 };
 
+const handleOpenCardAddPopup = function () {
+  cardForm.reset();
+  cardFromValidator.resetValidator();
+  openPopup(cardPopup);
+};
+
 const saveProfile = function (e) {
   e.preventDefault();
-  closePopup(profilePopup);
-
   profileName.textContent = profileNameInput.value;
   profileJob.textContent = profileJobInput.value;
+
+  closePopup(profilePopup);
 };
 
 const registerPopupEventsListeners = function () {
   previewCloseBtn.addEventListener("click", () => closePopup(previewPopup));
-  profileEditBtn.addEventListener("click", editProfile);
+  profileEditBtn.addEventListener("click", handleOpenProfilePopup);
   profileCloseBtn.addEventListener("click", () => closePopup(profilePopup));
   profileForm.addEventListener("submit", saveProfile);
-  cardAddBtn.addEventListener("click", () => openPopup(cardPopup));
+  cardAddBtn.addEventListener("click", handleOpenCardAddPopup);
   cardCloseBtn.addEventListener("click", () => closePopup(cardPopup));
   cardForm.addEventListener("submit", addCard);
   popupList.forEach((popup) =>

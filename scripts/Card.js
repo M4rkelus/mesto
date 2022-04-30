@@ -30,17 +30,18 @@ export default class Card {
     return this._cardElement;
   }
 
-  _deleteCard(e) {
-    e.target.closest(".card").remove();
+  _deleteCard() {
+    this._cardElement.remove();
+    this._cardElement = null;
   }
 
-  _toggleLike(e) {
-    e.target.classList.toggle("card__like-btn_active");
+  _toggleLike() {
+    this._cardLikeBtn.classList.toggle("card__like-btn_active");
   }
 
   _setEventListeners() {
-    this._cardDeleteBtn.addEventListener("click", this._deleteCard);
-    this._cardLikeBtn.addEventListener("click", this._toggleLike);
+    this._cardDeleteBtn.addEventListener("click", () => this._deleteCard());
+    this._cardLikeBtn.addEventListener("click", () => this._toggleLike());
     this._cardImage.addEventListener("click", () =>
       this._showCardPreview(this._name, this._link)
     );
