@@ -1,0 +1,39 @@
+{
+  "name": "mesto.project",
+  "version": "1.0.0",
+  "description": "image card-app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf dist && webpack",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/M4rkelus/mesto.git"
+  },
+  "author": "Mark Pirogov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/M4rkelus/mesto/issues"
+  },
+  "homepage": "https://github.com/M4rkelus/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "autoprefixer": "^10.4.7",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "cssnano": "^5.1.7",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss-loader": "^6.2.1",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
+  },
+  "dependencies": {
+    "core-js": "^3.22.5"
+  }
+}

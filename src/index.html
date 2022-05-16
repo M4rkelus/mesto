@@ -5,12 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body>
     <div class="page">
       <header class="header">
-        <img class="header__logo" src="./images/logo.svg" alt="Лого" />
+        <img
+          class="header__logo"
+          src="<%=require('./images/logo.svg')%>"
+          alt="Лого"
+        />
       </header>
 
       <main class="content">
@@ -93,7 +96,7 @@
               id="card-name-input"
               class="popup__field popup__field_value_card-name"
               type="text"
-              name="card-name"
+              name="name"
               placeholder="Название"
               minlength="2"
               maxlength="30"
@@ -152,7 +155,5 @@
         </div>
       </article>
     </template>
-
-    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>

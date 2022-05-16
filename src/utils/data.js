@@ -1,5 +1,5 @@
-/* Data */
-const initialCards = [
+/* Fake API data */
+export const initialCards = [
   {
     name: "Архыз",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
@@ -25,14 +25,3 @@ const initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
-
-const VALIDATION_CONFIG = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__field",
-  submitButtonSelector: ".popup__save-btn",
-  inactiveButtonClass: "popup__save-btn_inactive",
-  inputErrorClass: "popup__field_type_error",
-  errorClass: "popup__input-error_active",
-};
-
-export { initialCards, VALIDATION_CONFIG };
