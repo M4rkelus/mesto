@@ -30,10 +30,14 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/profile.css ***!
   \********************************************************************************************************************************************************/
 .profile{-webkit-box-pack:justify;-ms-flex-pack:justify;-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:flex;margin:0 auto;max-width:880px;min-height:120px;padding-top:40px;position:relative}@media (max-width:768px){.profile{flex-direction:column;justify-items:center}}
-/*!*************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar/profile__avatar.css ***!
-  \*************************************************************************************************************************************************************************/
-.profile__avatar{background:no-repeat url(74c3c0fb802dcfa83abb.jpg) 50%/cover;border-radius:50%;margin-right:30px;min-height:120px;min-width:120px}@media (max-width:768px){.profile__avatar{margin:0 0 26px}}
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar-btn/profile__avatar-btn.css ***!
+  \*********************************************************************************************************************************************************************************/
+.profile__avatar-btn{align-items:center;border:none;border-radius:50%;cursor:pointer;display:flex;flex-direction:column;height:120px;justify-content:center;margin-right:30px;overflow:hidden;padding:0;position:relative;width:120px}.profile__avatar-btn:hover:before{background:rgba(0,0,0,.8) url(ea8cca3b96edda24ec96.svg) no-repeat 50%;border-radius:50%;bottom:0;content:"";display:block;left:0;position:absolute;right:0;top:0}@media (max-width:768px){.profile__avatar-btn{margin:0 0 26px}}
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar-img/profile__avatar-img.css ***!
+  \*********************************************************************************************************************************************************************************/
+.profile__avatar-img{height:120px}
 /*!*********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__info/profile__info.css ***!
   \*********************************************************************************************************************************************************************/
@@ -69,15 +73,23 @@
 /*!*********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/card/__caption/card__caption.css ***!
   \*********************************************************************************************************************************************************************/
-.card__caption{-webkit-box-pack:justify;-ms-flex-pack:justify;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:var(--color-background-3);box-sizing:border-box;display:flex;justify-content:space-between;padding:25px 20px 25px 22px}
+.card__caption{-webkit-box-pack:justify;-ms-flex-pack:justify;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:var(--color-background-3);box-sizing:border-box;display:flex;justify-content:space-between;padding:23px 20px 23px 22px}
 /*!*****************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/card/__title/card__title.css ***!
   \*****************************************************************************************************************************************************************/
 .card__title{color:var(--color-text-2);font-size:24px;font-weight:900;line-height:29px;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 /*!***********************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/card/__like-grp/card__like-grp.css ***!
+  \***********************************************************************************************************************************************************************/
+.card__like-grp{display:flex;flex-direction:column;margin-left:30px}
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/card/__like-counter/card__like-counter.css ***!
+  \*******************************************************************************************************************************************************************************/
+.card__like-counter{color:var(--color-background-1);font-family:var(--main-font);font-size:13px;font-style:normal;font-weight:400;line-height:16px;text-align:center}
+/*!***********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/card/__like-btn/card__like-btn.css ***!
   \***********************************************************************************************************************************************************************/
-.card__like-btn{-ms-flex-negative:0;background:no-repeat url(77ea1611be45fdeca1cc.svg) 50%;border:none;cursor:pointer;flex-shrink:0;height:19px;margin-left:30px;padding:0;width:22px}.card__like-btn:hover{opacity:.5}.card__like-btn:active{background:no-repeat url(08af6fbb37d19d4aa333.svg) 50%}
+.card__like-btn{-ms-flex-negative:0;background:no-repeat url(77ea1611be45fdeca1cc.svg) 50%;border:none;cursor:pointer;flex-shrink:0;height:19px;padding:0;width:22px}.card__like-btn:hover{opacity:.5}.card__like-btn:active{background:no-repeat url(08af6fbb37d19d4aa333.svg) 50%}
 /*!**************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/card/__like-btn/_active/card__like-btn_active.css ***!
   \**************************************************************************************************************************************************************************************/

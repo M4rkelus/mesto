@@ -18,7 +18,17 @@
 
       <main class="content">
         <section class="profile">
-          <div class="profile__avatar"></div>
+          <button
+            class="profile__avatar-btn"
+            type="button"
+            aria-label="Редактировать"
+          >
+            <img
+              class="profile__avatar-img"
+              src="74c3c0fb802dcfa83abb.jpg"
+              alt="Ава"
+            />
+          </button>
           <div class="profile__info">
             <button
               class="profile__edit-btn"
@@ -116,7 +126,7 @@
               class="popup__save-btn"
               type="submit"
               name="submit"
-              value="Сохранить"
+              value="Создать"
             />
           </form>
           <button
@@ -135,6 +145,57 @@
           <button class="popup__close-btn" type="button"></button>
         </div>
       </div>
+
+      <div class="popup popup_avatar">
+        <div class="popup__wrapper">
+          <div class="popup__container">
+            <h2 class="popup__title">Обновить аватар</h2>
+            <form
+              class="popup__form popup__form_avatar"
+              name="avatar-form"
+              novalidate
+            >
+              <input
+                id="avatar-link"
+                class="popup__field popup__field_avatar-link"
+                type="url"
+                name="link"
+                placeholder="Ссылка на аватар"
+                required
+              />
+              <span class="popup__input-error avatar-link-error"></span>
+              <input
+                class="popup__save-btn"
+                type="submit"
+                name="submit"
+                value="Да"
+              />
+            </form>
+            <button class="popup__close-btn" type="button"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup popup_delete-confirm">
+        <div class="popup__wrapper">
+          <div class="popup__container">
+            <h2 class="popup__title">Вы уверены?</h2>
+            <form
+              class="popup__form popup__form_delete"
+              name="delete-form"
+              novalidate
+            >
+              <input
+                class="popup__save-btn"
+                type="submit"
+                name="submit"
+                value="Да"
+              />
+            </form>
+            <button class="popup__close-btn" type="button"></button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <template id="card">
@@ -147,11 +208,14 @@
         ></button>
         <div class="card__caption">
           <h2 class="card__title"></h2>
-          <button
-            class="card__like-btn"
-            type="button"
-            aria-label="Мне это любо"
-          ></button>
+          <div class="card__like-grp">
+            <button
+              class="card__like-btn"
+              type="button"
+              aria-label="Мне это любо"
+            ></button>
+            <span class="card__like-counter">0</span>
+          </div>
         </div>
       </article>
     </template>
