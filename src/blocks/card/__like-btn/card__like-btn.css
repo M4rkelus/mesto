@@ -1,7 +1,7 @@
 .card__like-btn {
   flex-shrink: 0;
   border: none;
-  margin-left: 30px;
+
   background: no-repeat url(../../../images/like.svg) center center;
   height: 19px;
   width: 22px;

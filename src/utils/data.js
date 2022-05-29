@@ -1,4 +1,4 @@
-/* Fake API data */
+/* Fake API data */ // может пригодится ¯\_(ツ)_/¯
 export const initialCards = [
   {
     name: "Архыз",
