@@ -1,6 +1,6 @@
 # Проект: Место
 
-[Cсылка на проект в GitHub Pages](https://m4rkelus.github.io/mesto/index.html "ссылка на GitHub Pages")
+[Cсылка на проект в GitHub Pages](https://m4rkelus.github.io/mesto "ссылка на GitHub Pages")
 
 ---
 
