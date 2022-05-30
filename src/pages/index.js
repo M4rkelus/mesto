@@ -11,14 +11,11 @@ import {
   profileNameInput,
   profileJobInput,
   profileEditBtn,
-  profileSaveBtn,
   avatarForm,
-  avatarSaveBtn,
   avatarEditBtn,
   cardForm,
   cardAddBtn,
   cardSaveBtn,
-  deleteCardBtn,
   VALIDATION_CONFIG,
   baseUrl,
   apiToken,
@@ -46,6 +43,7 @@ const cardPreviewPopup = new PopupWithImage(".popup_preview");
 
 // Popup with card add form
 const cardAddPopup = new PopupWithForm(".popup_card", (item) => {
+  cardAddPopup.renderLoading(true);
   api
     .postCard(item)
     .then((card) => {
@@ -54,34 +52,28 @@ const cardAddPopup = new PopupWithForm(".popup_card", (item) => {
       cardFromValidator.resetValidator();
     })
     .catch((err) => console.error(err))
-    .finally(() => (cardSaveBtn.value = "Создать"));
+    .finally(() => {
+      cardAddPopup.renderLoading(false);
+      cardSaveBtn.value = "Создать";
+    });
 });
 
 // Popup with card delete confirm
-const cardDeletePopup = new PopupWithConfirm(
-  ".popup_delete-confirm",
-  (cardId, deleteMethod) =>
-    api
-      .deleteCard(cardId)
-      .then(() => {
-        deleteMethod();
-        cardDeletePopup.close();
-      })
-      .catch((err) => console.error(err))
-      .finally(() => (deleteCardBtn.value = "Да"))
-);
+const cardDeletePopup = new PopupWithConfirm(".popup_delete-confirm");
 
 // Popup with user profile edit form
-const profileEditPopup = new PopupWithForm(".popup_profile", (data) =>
+const profileEditPopup = new PopupWithForm(".popup_profile", (data) => {
+  profileEditPopup.renderLoading(true);
   api
     .editUserData({ name: data.name, about: data.job })
     .then((user) => editUserInfo(user))
     .catch((err) => console.error(err))
-    .finally(() => (profileSaveBtn.value = "Сохранить"))
-);
+    .finally(() => profileEditPopup.renderLoading(false));
+});
 
 // Popup with user avatar edit form
-const avatarEditPopup = new PopupWithForm(".popup_avatar", ({ link }) =>
+const avatarEditPopup = new PopupWithForm(".popup_avatar", ({ link }) => {
+  avatarEditPopup.renderLoading(true);
   api
     .editUserAvatar(link)
     .then((user) => {
@@ -90,8 +82,8 @@ const avatarEditPopup = new PopupWithForm(".popup_avatar", ({ link }) =>
       renderApiData();
     })
     .catch((err) => console.error(err))
-    .finally(() => (avatarSaveBtn.value = "Сохранить"))
-);
+    .finally(() => avatarEditPopup.renderLoading(false));
+});
 
 // Form validators
 const profileFromValidator = new FormValidator(VALIDATION_CONFIG, profileForm);
@@ -132,14 +124,33 @@ const editUserInfo = function (user) {
 };
 
 const createCardElement = function (data, cardSelector) {
-  return new Card(
-    data,
-    cardSelector,
-    userData.getUserId(),
-    () => cardPreviewPopup.open(data),
-    (isLiked, id) => api.likeCard(isLiked, id),
-    (cardId, deleteMethod) => cardDeletePopup.open(cardId, deleteMethod)
-  ).createCard();
+  const card = new Card(
+    {
+      data: { ...data, userId: userData.getUserId() },
+      handleCardClick: () => cardPreviewPopup.open(data),
+      handleLikeClick: (isLiked, id) =>
+        api
+          .likeCard(isLiked, id)
+          .then((cardData) => card.toggleLike(cardData))
+          .catch((err) => console.error(err)),
+      handleDeleteClick: (cardId) => {
+        cardDeletePopup.open().setSubmit(() => {
+          cardDeletePopup.renderLoading(true);
+          api
+            .deleteCard(cardId)
+            .then(() => {
+              card.deleteCard(cardId);
+              cardDeletePopup.close();
+            })
+            .catch((err) => console.error(err))
+            .finally(() => cardDeletePopup.renderLoading(false));
+        });
+      },
+    },
+    cardSelector
+  );
+
+  return card.createCard();
 };
 
 const handleOpenProfilePopup = function () {

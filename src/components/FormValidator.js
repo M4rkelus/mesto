@@ -1,7 +1,6 @@
 export default class FormValidator {
   constructor(data, formElement) {
     this._formElement = formElement;
-    this._formSelector = data.formSelector; // ¯\_(ツ)_/¯ может потом пригодится
     this._inputSelector = data.inputSelector;
     this._submitButtonSelector = data.submitButtonSelector;
     this._inactiveButtonClass = data.inactiveButtonClass;

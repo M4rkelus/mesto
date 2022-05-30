@@ -13,6 +13,7 @@ export default class UserInfo {
 
   setUserAvatar(link) {
     this._avatar.src = link;
+    this._avatar.alt = this._name.textContent;
     return this;
   }
 

@@ -14,7 +14,7 @@
   cursor: pointer;
 }
 
-.profile__avatar-btn:hover::before {
+.profile__avatar-btn::before {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -25,6 +25,12 @@
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.8) url(../../../images/pencil.svg) no-repeat
     center center;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.profile__avatar-btn:hover::before {
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
