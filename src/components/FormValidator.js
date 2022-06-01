@@ -69,11 +69,17 @@ export default class FormValidator {
       : this._activateSubmitButton();
   }
 
+  updateLoadingView(isLoading) {
+    isLoading ? this._disableSubmitButton() : this._activateSubmitButton();
+    return this;
+  }
+
   resetValidator() {
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
     this._toggleButtonState();
+    return this;
   }
 
   enableValidation() {

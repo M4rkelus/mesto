@@ -16,6 +16,7 @@ import {
   cardForm,
   cardAddBtn,
   cardSaveBtn,
+  deteteForm,
   VALIDATION_CONFIG,
   baseUrl,
   apiToken,
@@ -44,16 +45,17 @@ const cardPreviewPopup = new PopupWithImage(".popup_preview");
 // Popup with card add form
 const cardAddPopup = new PopupWithForm(".popup_card", (item) => {
   cardAddPopup.renderLoading(true);
+  cardFromValidator.updateLoadingView(true);
   api
     .postCard(item)
     .then((card) => {
       cardList.addItem(createCardElement(card, "#card"));
       cardAddPopup.close();
-      cardFromValidator.resetValidator();
     })
     .catch((err) => console.error(err))
     .finally(() => {
       cardAddPopup.renderLoading(false);
+      cardFromValidator.updateLoadingView(false).resetValidator();
       cardSaveBtn.value = "Создать";
     });
 });
@@ -64,16 +66,21 @@ const cardDeletePopup = new PopupWithConfirm(".popup_delete-confirm");
 // Popup with user profile edit form
 const profileEditPopup = new PopupWithForm(".popup_profile", (data) => {
   profileEditPopup.renderLoading(true);
+  profileFromValidator.updateLoadingView(true);
   api
     .editUserData({ name: data.name, about: data.job })
     .then((user) => editUserInfo(user))
     .catch((err) => console.error(err))
-    .finally(() => profileEditPopup.renderLoading(false));
+    .finally(() => {
+      profileEditPopup.renderLoading(false);
+      profileFromValidator.updateLoadingView(false).resetValidator();
+    });
 });
 
 // Popup with user avatar edit form
 const avatarEditPopup = new PopupWithForm(".popup_avatar", ({ link }) => {
   avatarEditPopup.renderLoading(true);
+  avatarFromValidator.updateLoadingView(true);
   api
     .editUserAvatar(link)
     .then((user) => {
@@ -82,13 +89,17 @@ const avatarEditPopup = new PopupWithForm(".popup_avatar", ({ link }) => {
       renderApiData();
     })
     .catch((err) => console.error(err))
-    .finally(() => avatarEditPopup.renderLoading(false));
+    .finally(() => {
+      avatarEditPopup.renderLoading(false);
+      profileFromValidator.updateLoadingView(false).resetValidator();
+    });
 });
 
 // Form validators
 const profileFromValidator = new FormValidator(VALIDATION_CONFIG, profileForm);
 const avatarFromValidator = new FormValidator(VALIDATION_CONFIG, avatarForm);
 const cardFromValidator = new FormValidator(VALIDATION_CONFIG, cardForm);
+const deleteFromValidator = new FormValidator(VALIDATION_CONFIG, deteteForm);
 
 /* Functions */
 // Rendering user data and cards from the API
@@ -136,6 +147,7 @@ const createCardElement = function (data, cardSelector) {
       handleDeleteClick: (cardId) => {
         cardDeletePopup.open().setSubmit(() => {
           cardDeletePopup.renderLoading(true);
+          deleteFromValidator.updateLoadingView(true);
           api
             .deleteCard(cardId)
             .then(() => {
@@ -143,7 +155,10 @@ const createCardElement = function (data, cardSelector) {
               cardDeletePopup.close();
             })
             .catch((err) => console.error(err))
-            .finally(() => cardDeletePopup.renderLoading(false));
+            .finally(() => {
+              cardDeletePopup.renderLoading(false);
+              deleteFromValidator.updateLoadingView(false).resetValidator();
+            });
         });
       },
     },
@@ -178,5 +193,6 @@ const init = function () {
   cardFromValidator.enableValidation();
   profileFromValidator.enableValidation();
   avatarFromValidator.enableValidation();
+  deleteFromValidator.enableValidation();
 };
 init();

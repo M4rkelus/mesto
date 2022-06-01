@@ -49,6 +49,7 @@ export const cardSaveBtn = cardPopup.querySelector(".popup__save-btn");
 export const cardCloseBtn = cardPopup.querySelector(".popup__close-btn_card");
 // Card delete popup
 export const deleteCardPopup = document.querySelector(".popup_delete-confirm");
+export const deteteForm = deleteCardPopup.querySelector(".popup__form_delete");
 export const deleteCardBtn = deleteCardPopup.querySelector(".popup__close-btn");
 // Image preview popup
 export const previewPopup = document.querySelector(".popup_preview");

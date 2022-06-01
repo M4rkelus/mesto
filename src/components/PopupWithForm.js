@@ -21,9 +21,6 @@ export default class PopupWithForm extends Popup {
   renderLoading(isLoading) {
     this._saveButton.disabled = isLoading ? true : false;
     this._saveButton.value = isLoading ? "Сохранение..." : "Сохранить";
-    isLoading
-      ? this._saveButton.classList.add("popup__save-btn_inactive")
-      : this._saveButton.classList.remove("popup__save-btn_inactive");
   }
 
   setEventListeners() {
