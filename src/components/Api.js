@@ -33,7 +33,7 @@ export default class Api {
       method: "PATCH",
       headers: this._options.headers,
       body: JSON.stringify({ avatar: link }),
-    });
+    }).then(this._getResponse);
   }
 
   postCard(card) {
