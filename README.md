@@ -14,6 +14,8 @@
 - CSS Grid Layout
 - CSS media queries
 - JS DOM manipulations
+- OOP, prototype inheritance
+- Fetch API
 
 **ИСПОЛЬЗУЕМЫЕ МАТЕРИАЛЫ**
 
