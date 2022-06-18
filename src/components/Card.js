@@ -35,7 +35,7 @@ export default class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardTitle.textContent = this._name;
-    this._userId !== this._owner._id ? this._cardDeleteBtn.remove() : null;
+    this._userId !== this._owner._id && this._cardDeleteBtn.remove();
 
     this._updateLikesView();
     this._setEventListeners();

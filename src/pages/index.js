@@ -150,7 +150,7 @@ const createCardElement = function (data, cardSelector) {
           api
             .deleteCard(cardId)
             .then(() => {
-              card.deleteCard(cardId);
+              card.deleteCard();
               cardDeletePopup.close();
             })
             .catch((err) => console.error(err))
